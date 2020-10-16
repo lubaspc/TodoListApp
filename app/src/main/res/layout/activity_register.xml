@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.lubinpc.todolist.models.UserVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.auth.RegisterActivity">
+
+        <include android:id="@+id/toolbar"
+            layout="@layout/toolbar"/>
+
+        <ImageView
+            android:id="@+id/bg_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/bg"
+            android:scaleType="fitXY"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintVertical_bias="0" />
+
+
+        <ImageView
+            android:id="@+id/bg_bot"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/bg"
+            android:scaleType="fitXY"
+            android:rotation="180"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintVertical_bias="1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lbl_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bg_top"
+            android:text="@string/regis"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_display_1"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_user"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_title"
+            app:layout_constraintBottom_toTopOf="@id/til_password"
+            app:layout_constraintWidth_percent="0.8"
+            android:hint="@string/user"
+            android:layout_marginTop="32dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_user"
+                android:text="@={user.user}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_user"
+            android:layout_marginTop="32dp"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintWidth_percent="0.8">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:inputType="textPassword"
+                android:text="@={user.password}"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/register"
+            android:textColor="@color/black"
+            app:layout_constraintWidth_percent="0.7"
+            android:paddingVertical="16dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@id/bg_bot"
+            app:layout_constraintTop_toBottomOf="@id/til_password" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

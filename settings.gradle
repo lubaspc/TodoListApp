@@ -1,2 +1,4 @@
+include ':db'
+include ':retrofit'
 include ':app'
 rootProject.name = "TodoList"
