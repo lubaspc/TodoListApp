@@ -83,14 +83,23 @@
                         android:id="@+id/ic_alarm"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_baseline_access_alarm" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_programed"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_gravity="center_vertical"
-                        android:text="@{note.programed}" />
+                        app:boxStrokeWidth="0dp"
+                        android:enabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:inputType="text"
+                            android:text="@={note.programed}"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -101,8 +110,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_close"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/mcv_note"
             app:layout_constraintEnd_toEndOf="@id/mcv_note"
             app:layout_constraintTop_toTopOf="@id/mcv_note"
@@ -117,8 +126,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_save"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/mcv_note"
             app:layout_constraintEnd_toEndOf="@id/mcv_note"
             app:layout_constraintTop_toBottomOf="@id/mcv_note"
@@ -133,8 +142,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_erase"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/mcv_note"
             app:layout_constraintEnd_toStartOf="@id/mcv_note"
             app:layout_constraintTop_toBottomOf="@id/mcv_note"
@@ -147,6 +156,24 @@
             android:textAlignment="center"
             android:layout_gravity="center"
             app:layout_constraintHorizontal_bias="0.95" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_checked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/mcv_note"
+            app:layout_constraintEnd_toStartOf="@id/mcv_note"
+            app:layout_constraintTop_toTopOf="@id/mcv_note"
+            app:layout_constraintBottom_toTopOf="@id/mcv_note"
+            app:srcCompat="@drawable/ic_baseline_radio_button_unchecked"
+            app:backgroundTint="@color/colorPrimary"
+            checkedIcon="@{note.complete}"
+            app:tint="@color/black"
+            app:borderWidth="0dp"
+            visible="@{note.id > 0}"
+            android:textAlignment="center"
+            android:layout_gravity="center" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

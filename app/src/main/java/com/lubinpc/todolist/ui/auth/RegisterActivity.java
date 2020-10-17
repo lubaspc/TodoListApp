@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setupBtn() {
-        vBind.btnLogin.setOnClickListener(v -> {
+        vBind.btnRegister.setOnClickListener(v -> {
             if (validate()){
                 ProgressDialog progress = Dialogs.INSTANCE.progressDialog(getSupportFragmentManager());
                 handle.register(user,(success,message) -> {
@@ -45,12 +45,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean validate(){
         boolean isValid = true;
-        if (user.getUser().trim().equals("")){
+        if (user.getUser() == null || user.getUser().trim().equals("")){
             vBind.tilUser.setError("Es necesario colocar un nombre de usuario");
             isValid = false;
         }
 
-        if (user.getPassword().trim().equals("")){
+        if (user.getUser() == null || user.getPassword().trim().equals("")){
             vBind.tilUser.setError("Es necesario colocar una contraseña");
             isValid = false;
         }

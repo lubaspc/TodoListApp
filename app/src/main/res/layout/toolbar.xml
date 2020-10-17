@@ -6,10 +6,10 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:gravity="center_horizontal"
         android:id="@+id/toolbar"
+        style="@style/toolbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Light">
+        android:minHeight="?attr/actionBarSize">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_title"

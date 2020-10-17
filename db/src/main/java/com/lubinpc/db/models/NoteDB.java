@@ -1,7 +1,10 @@
 package com.lubinpc.db.models;
 
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.util.Date;
 
 @Entity(tableName = "note")
 public class NoteDB {
@@ -9,7 +12,16 @@ public class NoteDB {
     private long id;
     private String title;
     private String text;
-    private long programed;
+    @Nullable
+    private Date programed;
+
+    public Date getProgramed() {
+        return programed;
+    }
+
+    public void setProgramed(Date programed) {
+        this.programed = programed;
+    }
 
     public long getId() {
         return id;
@@ -35,11 +47,5 @@ public class NoteDB {
         this.text = text;
     }
 
-    public long getProgramed() {
-        return programed;
-    }
 
-    public void setProgramed(long programed) {
-        this.programed = programed;
-    }
 }

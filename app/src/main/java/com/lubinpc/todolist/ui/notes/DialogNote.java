@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -81,9 +82,38 @@ public class DialogNote extends DialogFragment {
     }
 
     private void setupBtn() {
-        vBind.fabSave.setOnClickListener(v -> actions.save(note));
-        vBind.fabErase.setOnClickListener(v -> actions.destroy(note));
+        vBind.fabSave.setOnClickListener(v -> {
+            if (validate()) {
+                actions.save(note);
+                dismiss();
+            }
+        });
+        vBind.fabErase.setOnClickListener(v -> {
+            actions.destroy(note);
+            dismiss();
+        });
         vBind.fabClose.setOnClickListener(v -> dismiss());
+        vBind.fabChecked.setOnClickListener(v -> {
+            note.setComplete(!note.getComplete());
+            String message = "Marcada como no completada";
+            if (note.getComplete()) message = "Marcada como completada";
+            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    private boolean validate(){
+        vBind.tilTitle.setError(null);
+        vBind.tilProgramed.setError(null);
+        boolean isValid = true;
+        if (note.getTitle() == null || note.getTitle().trim().equals("")){
+            vBind.tilTitle.setError("Es necesario poner un titulo");
+            isValid = false;
+        }
+//        if (note.getProgramed() == null || note.getProgramed().trim().equals("")){
+//            vBind.tilProgramed.setError("Es necesario colocar la fecha");
+//            isValid = false;
+//        }
+        return isValid;
     }
 
 

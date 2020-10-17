@@ -8,23 +8,33 @@ import androidx.room.Transaction;
 
 import com.lubinpc.db.models.NoteDB;
 
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Maybe;
 
 @Dao
-public interface NoteDao {
+public abstract class NoteDao {
 
     @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void upsert(NoteDB... notes);
+    public abstract void upsert(List<NoteDB> notes);
 
     @Query("SELECT * FROM note")
-    Maybe<List<NoteDB>> getAll();
+    public abstract List<NoteDB> getAll();
 
     @Transaction
     @Query("DELETE FROM note")
-    void deleteAll();
+    public abstract void deleteAll();
+
+    @Transaction
+    public void refresh(List<NoteDB> notes){
+        deleteAll();
+        upsert(notes);
+    }
+
+    @Query("SELECT * FROM note WHERE programed BETWEEN :from AND :to")
+    public abstract List<NoteDB> findProgramed(Date from, Date to);
 
 
 }

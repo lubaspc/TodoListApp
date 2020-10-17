@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 
 public interface TodoListInterface {
 
-    @GET(ApiConstans.wsPath + " notes")
+    @GET(ApiConstans.wsPath + "notes")
     Call<List<NoteWS>> notes(@Query("programed") Boolean programed);
 
     @POST(ApiConstans.wsPath +"note/create")

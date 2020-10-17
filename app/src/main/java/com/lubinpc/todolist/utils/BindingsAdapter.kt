@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.lubinpc.todolist.R
 import java.text.NumberFormat
 import java.util.*
 
@@ -22,8 +24,8 @@ fun View.bindVisible(visible: Boolean?) {
 fun ImageView.loadUrl(url: String?) {
     if (url != null && url.isNotEmpty()) {
         Glide.with(this)
-            .load(url)
-            .into(this)
+                .load(url)
+                .into(this)
     }
 }
 
@@ -33,6 +35,22 @@ fun TextView.asMoney(price: Number?) {
 }
 
 @BindingAdapter("textHtml")
-fun TextView.textHtml(textI: String?){
+fun TextView.textHtml(textI: String?) {
     text = Html.fromHtml(textI)
+}
+
+@BindingAdapter("checkedIcon")
+fun FloatingActionButton.checked(check: Boolean?) {
+    var idD = R.drawable.ic_baseline_radio_button_unchecked
+    if (check == true)
+        idD = R.drawable.ic_baseline_radio_button_checked
+    setImageResource(idD)
+}
+
+@BindingAdapter("backgroundBool")
+fun MaterialCardView.background(check: Boolean?) {
+    setCardBackgroundColor(this.context.getColor(
+            if (check == true) R.color.toolbar
+            else R.color.note
+    ))
 }

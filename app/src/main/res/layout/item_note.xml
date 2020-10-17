@@ -22,7 +22,8 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             android:layout_margin="16dp"
-            android:backgroundTint="@color/note"
+            backgroundBool="@{note.complete}"
+            app:cardBackgroundColor="@color/note"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
@@ -42,6 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="8dp"
+                    visible="@{!note.text.empty}"
                     android:background="@color/text" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -49,6 +51,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_title"
                     android:layout_marginTop="8dp"
+                    visible="@{!note.text.empty}"
                     android:text="@{note.text}" />
 
                 <View

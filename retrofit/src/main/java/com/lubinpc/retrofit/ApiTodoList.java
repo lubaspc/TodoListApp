@@ -12,6 +12,7 @@ import com.lubinpc.retrofit.api.serializers.DateDeserializaer;
 import com.lubinpc.retrofit.api.serializers.DateSerializer;
 import com.lubinpc.retrofit.models.NoteWS;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -86,6 +87,7 @@ public class ApiTodoList {
 
     @SuppressWarnings("unchecked")
     private void doRequest(final String operation, Call call, final CBSuccess cb) {
+        Log.d("Api_token",this.apiToken);
         call.enqueue(new Callback() {
             @SuppressWarnings("NullableProblems")
             @Override

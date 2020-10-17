@@ -11,6 +11,8 @@
 
     <style name="InputPrimary" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:textColorHint">@color/text</item>
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="hintTextColor">@color/black</item>
     </style>
 
     <style name="BtnPrimary" parent="Widget.MaterialComponents.Button">
@@ -38,5 +40,13 @@
         <item name="android:paddingBottom">16dp</item>
         <item name="elevation">0dp</item>
         <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
     </style>
 </resources>

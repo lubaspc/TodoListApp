@@ -17,9 +17,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.notes.ListNotesActivity">
 
-        <include android:id="@+id/toolbar"
-            layout="@layout/toolbar"/>
-
         <ImageView
             android:id="@+id/bg_top"
             android:layout_width="0dp"
@@ -46,6 +43,9 @@
             android:rotation="180"
             app:layout_constraintHeight_percent="0.1"
             app:layout_constraintVertical_bias="1" />
+
+        <include android:id="@+id/toolbar"
+            layout="@layout/toolbar"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/lbl_title"
@@ -82,8 +82,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/bg_bot"

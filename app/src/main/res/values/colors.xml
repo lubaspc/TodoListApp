@@ -7,4 +7,5 @@
     <color name="black">#000</color>
     <color name="white">#ffffff</color>
     <color name="note">#fff263</color>
+    <color name="toolbar">#a5d6a7</color>
 </resources>

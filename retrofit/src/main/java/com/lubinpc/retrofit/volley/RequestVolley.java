@@ -1,4 +1,4 @@
-package com.lubinpc.todolist.volley;
+package com.lubinpc.retrofit.volley;
 
 import android.content.Context;
 
@@ -7,18 +7,15 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
 import com.lubinpc.retrofit.ApiConstans;
 import com.lubinpc.retrofit.api.CBGeneric;
 import com.lubinpc.retrofit.api.CBSuccess;
 import com.lubinpc.retrofit.api.entities.GenericResponse;
 import com.lubinpc.retrofit.models.UserWS;
+import com.lubinpc.retrofit.utils.JsonUtils;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import static com.lubinpc.todolist.utils.GsonUtilsKt.toJSON;
-import static com.lubinpc.todolist.utils.GsonUtilsKt.toModel;
 
 public class RequestVolley {
 
@@ -47,13 +44,13 @@ public class RequestVolley {
         GenericResponse<UserWS> gr = new GenericResponse<>(400);
         gr.setSuccess(false);
         gr.setMessage("Ocurrió un error en la solicitud");
-        JsonObjectRequest task = new JsonObjectRequest(Request.Method.POST, url + "login", toJSON(user), response -> {
+        JsonObjectRequest task = new JsonObjectRequest(Request.Method.POST, url + "login", JsonUtils.toJSON(user), response -> {
             try {
                 if (!response.getBoolean("success")){
                     gr.setMessage(response.getString("message"));
                 }else {
                     gr.setSuccess(true);
-                    gr.setData(toModel(response.getJSONObject("data").toString(),UserWS.class));
+                    gr.setData(JsonUtils.toModel(response.getJSONObject("data").toString(),UserWS.class));
                 }
                 cb.onResult(gr);
             } catch (JSONException e) {
@@ -67,7 +64,7 @@ public class RequestVolley {
 
 
     public void register(UserWS user, CBSuccess<String> cb){
-        JsonObjectRequest task = new JsonObjectRequest(Request.Method.POST, url + "register", toJSON(user), response -> {
+        JsonObjectRequest task = new JsonObjectRequest(Request.Method.POST, url + "register", JsonUtils.toJSON(user), response -> {
             try {
                 if (!response.getBoolean("success")){
                   cb.onResponse(false,response.getString("message"));
