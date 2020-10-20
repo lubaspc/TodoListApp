@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lubinpc.todolist">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -16,9 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:requestLegacyExternalStorage="true"
+        android:resizeableActivity="false"
+        tools:ignore="UnusedAttribute"
         android:name=".TodoListApp">
 
-        <activity android:name=".ui.auth.LoginActivity">
+        <activity android:name=".ui.auth.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +30,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.notes.ListNotesActivity"/>
-        <activity android:name=".ui.auth.RegisterActivity" />
-        <service android:name=".service.NotificationService"/>
+        <activity android:name=".ui.notes.ListNotesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.auth.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <service android:name=".service.NotificationService"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
