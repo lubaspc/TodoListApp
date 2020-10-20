@@ -2,10 +2,12 @@ package com.lubinpc.retrofit.volley;
 
 import android.content.Context;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 import com.lubinpc.retrofit.ApiConstans;
 import com.lubinpc.retrofit.api.CBGeneric;
@@ -19,6 +21,7 @@ import org.json.JSONException;
 
 public class RequestVolley {
 
+    private static final int MY_DEFAULT_TIMEOUT = 15000;
     private static RequestVolley instance;
     private RequestQueue queue;
     private String url = ApiConstans.serverPath + ApiConstans.wsPath;
@@ -59,6 +62,7 @@ public class RequestVolley {
         }, error -> {
             cb.onResult(gr);
         });
+        configRequest(task);
         queue.add(task);
     }
 
@@ -77,8 +81,17 @@ public class RequestVolley {
         }, error -> {
             cb.onResponse(false,"Ocurrió un error en la solicitud");
         });
+        configRequest(task);
         queue.add(task);
     }
+
+    private static <T> void configRequest(JsonRequest<T> request){
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                MY_DEFAULT_TIMEOUT,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+    }
+
 
 
 }

@@ -30,7 +30,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.Callback;
 
 public class ApiTodoList {
-    private static final String TAG = "API_SANTAFIX";
+    private static final String TAG = "API_TODOLIST";
     private static ApiTodoList instance;
     private TodoListInterface apiService;
     private String apiToken;

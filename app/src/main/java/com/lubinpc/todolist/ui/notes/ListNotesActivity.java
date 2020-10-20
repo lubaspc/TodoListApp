@@ -87,7 +87,11 @@ public class ListNotesActivity extends AppCompatActivity {
         noteHandle.getNotes(notes -> {
             progress.dismiss();
             if (notes == null){
-                Dialogs.INSTANCE.alert(this);
+                Dialogs.INSTANCE.alert(this,() -> {
+                    startActivity(getIntent());
+                    finish();
+                    return null;
+                });
                 return;
             }
             vBind.setIsEmpty(notes.isEmpty());
