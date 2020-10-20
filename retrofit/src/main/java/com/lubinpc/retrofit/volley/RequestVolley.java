@@ -46,7 +46,7 @@ public class RequestVolley {
     public void login(UserWS user, CBGeneric<GenericResponse<UserWS>> cb){
         GenericResponse<UserWS> gr = new GenericResponse<>(400);
         gr.setSuccess(false);
-        gr.setMessage("Ocurrió un error en la solicitud");
+        gr.setMessage("Ocurrió un error en la solicitud, verifica tu conexión a internet");
         JsonObjectRequest task = new JsonObjectRequest(Request.Method.POST, url + "login", JsonUtils.toJSON(user), response -> {
             try {
                 if (!response.getBoolean("success")){
@@ -79,7 +79,7 @@ public class RequestVolley {
                 e.printStackTrace();
             }
         }, error -> {
-            cb.onResponse(false,"Ocurrió un error en la solicitud");
+            cb.onResponse(false,"Ocurrió un error en la solicitud, verifica tu conexión a internet");
         });
         configRequest(task);
         queue.add(task);

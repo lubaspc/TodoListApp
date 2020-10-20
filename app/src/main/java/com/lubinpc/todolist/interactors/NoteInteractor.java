@@ -63,7 +63,7 @@ public class NoteInteractor implements ListNotesActivity.NoteHandle, Notificatio
     @Override
     public void creteNote(NoteVM note, CBSuccess<String> cb) {
         api.create(ModelExtencion.INSTANCE.getToNoteWS(note), (success, result) -> {
-            if (!success) cb.onResponse(false, "Ocurrió un error en la comunicación");
+            if (!success) cb.onResponse(false, "Ocurrió un error en la comunicación, verifica tu conexión a internet");
             else cb.onResponse(result.isSuccess(), result.getMessage());
         });
     }
@@ -71,7 +71,7 @@ public class NoteInteractor implements ListNotesActivity.NoteHandle, Notificatio
     @Override
     public void update(NoteVM note, CBSuccess<String> cb) {
         api.update(note.getId(), ModelExtencion.INSTANCE.getToNoteWS(note), (success, result) -> {
-            if (!success) cb.onResponse(false, "Ocurrió un error en la comunicación");
+            if (!success) cb.onResponse(false, "Ocurrió un error en la comunicación, verifica tu conexión a internet");
             else cb.onResponse(result.isSuccess(), result.getMessage());
         });
     }
@@ -79,7 +79,7 @@ public class NoteInteractor implements ListNotesActivity.NoteHandle, Notificatio
     @Override
     public void destroy(long noteId, CBSuccess<String> cb) {
         api.destroy(noteId, (success, result) -> {
-            if (!success) cb.onResponse(false, "Ocurrió un error en la comunicación");
+            if (!success) cb.onResponse(false, "Ocurrió un error en la comunicación, verifica tu conexión a internet");
             else cb.onResponse(result.isSuccess(), result.getMessage());
         });
     }

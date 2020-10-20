@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.room.Room;
 
@@ -35,10 +36,16 @@ public class TodoListApp extends Application {
                 .fallbackToDestructiveMigration()
                 .build();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(new Intent(this, NotificationService.class));
-        }else{
-            startService(new Intent(this, NotificationService.class));
+        startService();
+    }
+
+    private void startService() {
+        try {
+            Intent service = new Intent(this, NotificationService.class);
+            stopService(service);
+            startService(service);
+        } catch (Exception e) {
+            Log.e("Ocurrió un error", e.getMessage());
         }
 
     }
